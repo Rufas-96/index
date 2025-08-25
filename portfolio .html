@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>REPUDI ESLI RUFAS </title>
+  <meta name="description" content="Your Name — Portfolio, Projects, Skills and Contact" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121733;
+      --muted:#a9b3c9;
+      --text:#e6ecff;
+      --brand:#6ea8fe;
+      --brand-2:#a06bff;
+      --ring:0 0 0 3px color-mix(in oklab, var(--brand) 40%, transparent);
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; color:var(--text); background:radial-gradient(1200px 600px at 80% -10%, #1b2551 0%, transparent 60%), linear-gradient(180deg,#0b1020, #090d1a 60%);
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+    .pill{display:inline-flex; gap:8px; align-items:center; padding:8px 12px; background:linear-gradient(135deg,var(--card), #0e1430); border:1px solid #223; border-radius:999px; color:var(--muted); font-weight:600; letter-spacing:.3px}
+    .btn{display:inline-block; padding:14px 18px; border-radius:12px; font-weight:700; border:1px solid #2a3560; background:linear-gradient(135deg, #1b2453, #0f1434); box-shadow:var(--shadow); transition:.2s transform, .2s box-shadow}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 14px 34px rgba(0,0,0,.45)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand), var(--brand-2)); color:#0a0e1f}
+    .btn.ghost{background:transparent}
+    header.nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:linear-gradient(180deg, rgba(9,12,30,.8), rgba(9,12,30,.35)); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-wrap{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px}
+    .brand .logo{width:34px; height:34px; border-radius:12px; background:conic-gradient(from 0deg, var(--brand), var(--brand-2)); box-shadow:0 6px 18px rgba(110,168,254,.5)}
+    nav ul{list-style:none; margin:0; padding:0; display:flex; gap:16px}
+    nav a{padding:10px 12px; border-radius:10px; color:var(--muted)}
+    nav a:hover{background:rgba(255,255,255,.05); color:var(--text)}
+
+    /* Mobile menu (CSS-only) */
+    #menu-toggle{display:none}
+    .menu-btn{display:none; border:1px solid #2a3560; border-radius:10px; padding:10px}
+    @media (max-width: 860px){
+      nav ul{display:none; position:absolute; left:20px; right:20px; top:62px; background:#0d1230; border:1px solid #223; border-radius:14px; padding:10px; flex-direction:column}
+      #menu-toggle:checked ~ nav ul{display:flex}
+      .menu-btn{display:inline-flex}
+    }
+
+    /* Hero */
+    .hero{padding:84px 0 56px}
+    .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center}
+    .hero h1{font-size:clamp(32px, 4.8vw, 56px); line-height:1.05; margin:14px 0 14px}
+    .gradient{
+      background: linear-gradient(90deg,var(--brand), var(--brand-2));
+      -webkit-background-clip:text; background-clip:text; color:transparent
+    }
+    .hero p{color:var(--muted); font-size:18px}
+    .hero .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .hero-card{background:linear-gradient(180deg, #0e1436, #0a102a); border:1px solid #243; border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
+
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+
+    /* Section */
+    section{padding:56px 0}
+    .section-head{display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:20px}
+    .section-head h2{margin:0; font-size:clamp(22px, 3.2vw, 34px)}
+    .muted{color:var(--muted)}
+
+    /* About */
+    .about{display:grid; grid-template-columns: 1.1fr .9fr; gap:24px}
+    .about .card{background:linear-gradient(180deg, #0d1334, #0a0f28); border:1px solid #243; border-radius:var(--radius); padding:22px}
+    .about ul{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; list-style:none; padding:0; margin:0}
+    .about li{padding:12px 14px; border-radius:12px; border:1px dashed #2a3560; color:var(--muted)}
+    @media (max-width: 960px){
+      .about{grid-template-columns:1fr}
+    }
+
+    /* Skills */
+    .chips{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{padding:10px 12px; border:1px solid #2a3560; border-radius:999px; color:var(--muted); background:linear-gradient(180deg,#0f163b,#0b1130)}
+
+    /* Projects */
+    .grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:18px}
+    .card{background:linear-gradient(180deg, #0d1336, #0a102b); border:1px solid #243; border-radius:var(--radius); padding:18px; transition:.2s transform, .2s box-shadow}
+    .card:hover{transform:translateY(-4px); box-shadow:0 16px 38px rgba(0,0,0,.45)}
+    .card .cover{aspect-ratio:16/9; border-radius:14px; background:linear-gradient(135deg,rgba(110,168,254,.2),rgba(160,107,255,.2)); border:1px solid #2a3560; display:grid; place-items:center; font-weight:800; letter-spacing:.8px; color:#cbd6ff}
+    .card .meta{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:10px}
+    .tag{font-size:12px; padding:6px 8px; border-radius:999px; border:1px solid #2a3560; color:var(--muted)}
+    .card p{color:var(--muted)}
+    @media (max-width: 1000px){.grid{grid-template-columns:repeat(2, minmax(0,1fr))}}
+    @media (max-width: 640px){.grid{grid-template-columns:1fr}}
+
+    /* Contact */
+    form{display:grid; gap:12px}
+    input, textarea{width:100%; background:#0c1233; border:1px solid #253056; border-radius:12px; padding:12px 14px; color:var(--text); font:inherit}
+    input:focus, textarea:focus{outline:none; box-shadow:var(--ring)}
+    textarea{min-height:120px; resize:vertical}
+
+    /* Footer */
+    footer{padding:44px 0; color:var(--muted)}
+    .footer-grid{display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center}
+    .socials{display:flex; gap:12px}
+    .socials a{display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border:1px solid #2a3560; border-radius:12px}
+    .small{font-size:13px}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-wrap">
+      <div class="brand">
+        <a href="#" class="logo">
+            <img src="C:\Users\APPLE\Downloads\cbe30549-c1d1-499c-80e2-c41c81f02c63.png" alt="My Logo" />
+          </a>
+          <a href="#" class >REPUDI ESLI RUFAS</a>
+
+          
+      </div>
+
+      <label for="menu-toggle" class="menu-btn" aria-label="Toggle menu">☰</label>
+      <input id="menu-toggle" type="checkbox" />
+
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="pill" href="resume.pdf" target="_blank" rel="noopener">Résumé ▸</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="pill">Open to opportunities</span>
+          <h1>Hi, I’m <span class="gradient">REPUDI ESLI RUFAS</span> — a Backend developer crafting clean, fast, accessible experiences.</h1>
+          <p>Based in Guntur, India. I build products with empathy, performance, and delightful details. Currently seeking internships and freelance projects.</p>
+          <div class="cta">
+            <a class="btn primary" href="#projects">See my work</a>
+            <a class="btn ghost" href="#contact">Contact me</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <strong>Quick facts</strong>
+          <ul class="muted" style="margin:10px 0 0 18px">
+            <li>3+ major projects shipped</li>
+            <li>Strong with HTML, CSS, JS, React</li>
+            <li>Focus on accessibility (WCAG)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>About</h2>
+          <p class="muted">Who I am & how I work</p>
+        </div>
+        <div class="about">
+          <div class="card">
+            <p>Hello! I’m <strong>REPUDI ESLI RUFAS</strong>, a developer who loves turning ideas into elegant, usable interfaces. I care about semantic markup, scalable CSS, and smooth micro‑interactions — the details that add up to great UX.</p>
+            <p>Beyond code, I enjoy mentoring peers, writing docs, and collaborating across design & product to ship features that matter.</p>
+          </div>
+          <div class="card">
+            <ul>
+              <li>📍 Guntur, India </li>
+              <li>🎓 B-Tech 3rd year </li>
+              <li>🛠 Preferred stack: HTML • CSS • JS • React</li>
+              <li>⚡ Interests: UI engineering, performance, Prompt Engineering</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <h2>Skills</h2>
+          <p class="muted">Tech I use regularly</p>
+        </div>
+        <div class="chips">
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">Responsive Design</span>
+          <span class="chip">Python</span>
+          <span class="chip">Accessibility</span>
+          <span class="chip">Performance</span>
+          <span class="chip">JavaScript (ES6+)</span>
+          <span class="chip">React</span>
+          <span class="chip">Git & GitHub</span>
+          <span class="chip">Prompt Engineering</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <h2>INTERNSHIPS</h2>
+          <p class="muted">A few things about me!</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="cover"><img src="C:\Users\APPLE\Downloads\tcsss.PNG" alt="My Logo" /></div>
+            <div class="meta">
+              <strong>Cybersecurity	Analyst	Job	Simulation</strong>      
+              <span class="tag">2025</span>
+            </div>
+            <p class="muted">Identity	and	access	management	(IAM)	fundamentals
+                IAM	strategy	assessment
+                Crafting	custom	IAM	solutions
+                Platform	integration.</p>
+            <a class="btn" href="#" target="_blank" rel="noopener">TATA internship</a>
+          </article>
+          <article class="card">
+            <div class="cover"><img src="C:\Users\APPLE\Downloads\BLACKBUCKSSSS.PNG" alt="My Logo" /></div>
+            <div class="meta">
+              <strong>ChatGPT, Prompt Engineering & Generative AI</strong>
+              <span class="tag">2025</span>
+            </div>
+            <p class="muted">Short-term Internship of 120 hours in ChatGPT, Prompt Engineering & Generative AI, conducted from May 2025 to July 2025.</p>
+            <a class="btn" href="#" target="_blank" rel="noopener">BLACKBUCK INTERNSHIP</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p class="muted">Let’s build something great</p>
+        </div>
+        <div class="grid" style="grid-template-columns:1fr .9fr">
+          <div class="card">
+            <form action="#" method="post" onsubmit="return false">
+              <label>
+                <span class="small">Your name</span>
+                <input type="text" name="name" placeholder="Jane Doe" required>
+              </label>
+              <label>
+                <span class="small">Email</span>
+                <input type="email" name="email" placeholder="jane@example.com" required>
+              </label>
+              <label>
+                <span class="small">Message</span>
+                <textarea name="message" placeholder="Hello! I’d like to discuss…" required></textarea>
+              </label>
+              <button class="btn primary" type="submit">Send message</button>
+              <p class="small muted" style="margin:8px 0 0">This is a static demo form (HTML/CSS only). Connect with a service like Formspree or Netlify Forms to receive submissions.</p>
+            </form>
+          </div>
+          <div class="card">
+            <p><strong>Email</strong><br><a href="mailto:you@example.com">repudirufas@gmail.com</a></p>
+            <p><strong>Location</strong><br>Guntur, India</p>
+            <p><strong>Availability</strong><br>Freelance & internships</p>
+            <div class="socials" style="margin-top:8px">
+              <a href="#" aria-label="GitHub">GitHub ▸</a>
+              <a href="#" aria-label="LinkedIn">LinkedIn ▸</a>
+              <a href="#" aria-label="Twitter">Twitter ▸</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>s
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="small">© <span id="y">2025</span>  All rights reserved.</div>
+      <div class="socials">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
